@@ -15,11 +15,21 @@
       ...
     }@inputs:
     let
+      system = "x86_64-linux"; # current system
+      pkgs = import nixpkgs {
+        inherit system;
+        inherit nixpkgs;
+        config = {
+          allowUnfree = true;
+        };
+      };
+      #pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+      lib = nixpkgs.lib;
       # This lets us reuse the code to "create" a system
       # Credits go to sioodmy on this one!
       # https://github.com/sioodmy/dotfiles/blob/main/flake.nix
       mkSystem =
-        pkgs: system: hostname: gui:
+        pkgs: system: hostname:
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
@@ -44,7 +54,7 @@
     in
     {
       nixosConfigurations = {
-        aspire = mkSystem inputs.nixpkgs "x86_64-linux" "aspire" true;
+        aspire = mkSystem inputs.nixpkgs "x86_64-linux" "aspire";
       };
     };
 }
