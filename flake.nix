@@ -12,7 +12,6 @@
     {
       nixpkgs,
       nixpkgs-stable,
-      ...
     }@inputs:
     let
       # This lets us reuse the code to "create" a system
