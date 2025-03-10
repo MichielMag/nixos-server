@@ -12,6 +12,7 @@
     {
       nixpkgs,
       nixpkgs-stable,
+      ...
     }@inputs:
     let
       # This lets us reuse the code to "create" a system
@@ -35,7 +36,7 @@
                   };
                 })
               ];
-              nixpkgs.config.allowUnfree = true;
+              nixpkgs.config.allowUnfree = true;`
             }
           ];
 
