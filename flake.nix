@@ -25,16 +25,20 @@
             { networking.hostName = hostname; }
             ./modules/system
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            #(./. + "/hosts/${hostname}/host.nix")
+            (./. + "/hosts/${hostname}/host.nix")
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  stable = import inputs.nixpkgs-stable {
+                    system = final.system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+              nixpkgs.config.allowUnfree = true;
+            }
           ];
-          nixpkgs.overlays = [
-            (final: prev: {
-              stable = import inputs.nixpkgs-stable {
-                system = final.system;
-                config.allowUnfree = true;
-              };
-            })
-          ];
+
           specialArgs = {
             inherit inputs;
           };
