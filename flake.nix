@@ -26,7 +26,7 @@
             { networking.hostName = hostname; }
             ./modules/system
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            (./. + "/hosts/${hostname}/settings.nix")
+            (./. + "/hosts/${hostname}/host.nix")
           ];
           nixpkgs.overlays = [
             (final: prev: {
