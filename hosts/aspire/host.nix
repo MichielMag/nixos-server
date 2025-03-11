@@ -14,19 +14,19 @@
   #};
 
   networking = {
-    interfaces.enp2s0f0 = {
-      useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.1.254";
-          prefixLength = 24;
-        }
-      ];
-    };
-    defaultGateway = {
-      address = "192.168.1.1";
-      interface = "enp2s0f0";
-    };
+    #interfaces.enp2s0f0 = {
+    #  useDHCP = false;
+    #  ipv4.addresses = [
+    #    {
+    #      address = "192.168.1.254";
+    #      prefixLength = 24;
+    #    }
+    #  ];
+    #};
+    #defaultGateway = {
+    #  address = "192.168.1.1";
+    #  interface = "enp2s0f0";
+    #};
     interfaces.wlp3s0.useDHCP = true;
     nameservers = [
       "9.9.9.9"

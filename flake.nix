@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   # All outputs for the system (configs)
