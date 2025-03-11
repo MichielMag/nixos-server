@@ -13,6 +13,7 @@
     {
       nixpkgs,
       nixpkgs-stable,
+      vscode-server,
       ...
     }@inputs:
     let
@@ -24,6 +25,7 @@
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
+            vscode-server.nixosModules.default
             { networking.hostName = hostname; }
             ./modules/system
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
