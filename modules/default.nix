@@ -7,7 +7,6 @@
 
 {
   imports = [
-
+    ./home-automation/hass
   ];
-
 }
